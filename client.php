@@ -4,9 +4,9 @@
     let arr_size;
 
     function random_arr() {
-        arr_size = Number(prompt('Введите размер массива'));
+        arr_size = Number(prompt('Input size of array'));
         if (!arr_size || arr_size <= 0) {
-            alert('Некорректный ввод');
+            alert('Incorrect input');
             return 0;
         }
         $('#create').prop("disabled", true);
@@ -42,15 +42,15 @@
         return result;
     }
 
-    function swap(arr_key_1, arr_key_2) {
+    function swap(arrkey1, arrkey2) {
         $.ajax({
             url: "swap.php",
             type: "POST",
             cache: false,
             async: false,
             data: {
-                "arr_key_1": arr_key_1,
-                "arr_key_2": arr_key_2
+                "arrkey1": arrkey1,
+                "arrkey2": arrkey2
             },
             dataType: "html",
             success: function (data) {
