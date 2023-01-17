@@ -29,17 +29,12 @@
 | **arr_key** | INT | - | - | ключ элемента |
 | **value** | INT | - | - | значение элемента |
 
-5. Алгоритмы
-
-*sifting function*
-
-![sifting](sifting.png)
 
 6. HTTP запросы/ответы
 
 *Запрос*
 
-POST /lr_5/get_val.php HTTP/1.1 <br>
+POST /lr_5/getval.php HTTP/1.1 <br>
 Host: localhost <br>
 Accept: text/plain, */*; q=0.01 <br>
 Content-Type: application/x-www-form-urlencoded; charset=UTF-8 <br>
@@ -63,26 +58,22 @@ X-Content-Type-Options: nosniff <br>
 
 7. Значимые фрагменты кода
 
-*Функция генерации случайных элементов*
+*Функция сортировок*
 ```js
-function rand(){
-        arr_size = Number(prompt('Введите размер массива'));
-        if (!arr_size || arr_size <= 0){
-            alert('Некорректный ввод');
-            return 0;
-        }
-        $("#create").prop("disabled", true);
-        $.ajax({
-            url: "rand.php",
-            type: "POST",
-            cache: false,
-            async: false,
-            data: {"size": arr_size},
-            dataType: "html",
-            success: function(data){
-                $("#create").prop("disabled", false);
-                $("#sort").prop("disabled", false);
+  function bblSort(arr_key) {
+        for (arr_key = 0; arr_key < arr_size; arr_key++) {
+            if (getval(arr_key) > getval(arr_key + 1)) {
+                swap(arr_key, arr_key + 1);
             }
-        });
+        }
+    }
+    function Sort(){
+        $("#sort").prop("disabled",true);
+        $("#create").prop("disabled", true);
+        for (let i = 0;i < arr_size;i++){
+            bblSort(i);
+        }
+        alert("success");
+        $("#create").prop("disabled", false);
     }
 ```
